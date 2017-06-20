@@ -46,6 +46,7 @@ definitions token also stack
   : drop-tokens next drop ;
   : pop-tokens  next ;
   : push-tokens expand ;
+  : -rot-tokens rot-tokens rot-tokens ;
   except stack
 
 definitions math
