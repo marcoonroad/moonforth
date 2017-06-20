@@ -1,0 +1,20 @@
+# TODO
+
+[ ? ] Refactor the libraries into reusable separated functors
+[ - ] Blocks as higher-order values (that is, anonymous colon definitions as atomic values)
+[ - ] Word-body variables (lexical variables through "let")
+[ V ] Input/token stack (low-level macro system)
+[ - ] Figure out how to implement functors (parametric modules)
+[ - ] Hack named parameters in some way.
+[ V ] String literals
+[ V ] Overload of strings in the same way of numbers
+[ - ] Overload of any other atomic value (including blocks)
+[ - ] User-defined interpreter states (must have a seamless way of plugging custom states)
+[ - ] Stack of intepreter states (so transitions are used with the data stack as like the token stack)
+[ - ] Flags (such as [immediate]) are per execution tokens, not dictionary entries (words)
+[ V ] Implement the word "[']" as primitive (impossible through colon definition!)
+[ - ] Task/process support through Lua's "coroutine" API
+[ - ] Differs "compile-only" from "immediate" ("\\" must be immediate to also skip on compilation)
+[ - ] Keep previous colon definitions, so "forget" will be safer
+[ - ] Document words with associated stack effect (a kind of "contract"/"type annotation")
+[ + ] Implement loader isolation while loading external modules for the sake of POLA.
