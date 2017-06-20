@@ -4,6 +4,8 @@ local misc   = require 'forth.extra.misc'
 local function functor (interpreter)
     local dictionary = interpreter.state.dictionary
 
+    interpreter.module.dictionary.definitions 'forth'
+
     function dictionary.also (...)
         if interpreter: skipping ( ) then return ... end
 
@@ -51,6 +53,14 @@ local function functor (interpreter)
 
         return ...
     end
+
+    dictionary[ "\\" ] = function (...)
+        interpreter.state.next = misc.noop
+
+        return ...
+    end
+
+    interpreter.state.immediate[ "\\" ]  = true
 end
 
 return functor

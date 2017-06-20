@@ -238,10 +238,10 @@ local function functor (interpreter)
         return ...
     end
 
-    dictionary[ "\\" ] = function (...)
-        interpreter.state.next = misc.noop
+    function dictionary.execute (f, ...)
+        if interpreter: skipping ( ) then return f, ... end
 
-        return ...
+        return f (...)
     end
 
     function dictionary.literal (x, ...)
@@ -262,7 +262,6 @@ local function functor (interpreter)
     interpreter.state.immediate[ ";" ]   = true
     interpreter.state.immediate.postpone = true
     interpreter.state.immediate[ "[']" ] = true
-    interpreter.state.immediate[ "\\" ]  = true
 
     interpreter.module.dictionary.definitions 'forth'
 end

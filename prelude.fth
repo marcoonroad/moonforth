@@ -47,9 +47,4 @@
 \  1 tuck do over i cells + @
 \  * loop swap drop ;
 
-alias error      throw
-alias raise      throw
-alias list-words words
-alias print      .
-
 \ ...

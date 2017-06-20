@@ -1,11 +1,9 @@
 local export = { }
 
-local vocabularies = {
-    [ "forth" ]  = true,
-    [ "math" ]   = true,
-    [ "stack" ]  = true,
-    [ "word" ]   = true,
-    [ "memory" ] = true,
-}
+export[ "forth" ]  = true
+export[ "math" ]   = true
+export[ "stack" ]  = true
+export[ "word" ]   = true
+export[ "memory" ] = true
 
 return export

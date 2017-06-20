@@ -19,12 +19,6 @@ local function functor (interpreter)
         return type (x), ...
     end
 
-    function dictionary.execute (f, ...)
-        if interpreter: skipping ( ) then return f, ... end
-
-        return f (...)
-    end
-
     function dictionary.see (...)
         if interpreter: skipping ( ) then return ... end
 

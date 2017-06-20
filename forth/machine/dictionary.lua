@@ -24,15 +24,28 @@ local function functor (interpreter)
     function metaobject: __index (word)
         local value = dictionary.active[ word ]
 
-        if isolated and not whitelist[ word ] then
+    --[[
+        if isolated and value and not whitelist[ name[ dictionary.active ] ] then
+            isolated = false
+
             error (reason.vocabulary.isolated: format (word))
         end
+    ]]--
 
         if value == nil then
             for index = 1, #dictionary do
                 value = dictionary[ index ][ word ]
 
-                if value ~= nil then return value end
+                if value ~= nil then
+                    if isolated and value and not whitelist[ name[ dictionary[ index ] ] ] then
+                        isolated = false
+
+                        error (reason.vocabulary.isolated: format (word))
+
+                    else
+                        return value
+                    end
+                end
             end
 
             return dictionary.forth[ word ]
@@ -186,8 +199,8 @@ local function functor (interpreter)
         return self
     end
 
-    function export.isolate (flag) flag = flag or true
-        isolated = flag
+    function export.isolate (flag)
+        isolated = flag == nil and true or flag
     end
 
     return export
